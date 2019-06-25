@@ -21,10 +21,52 @@ app.post('/', async (req, res) => {
   console.log('request', req.body);
   //   response.setHeader('Content-Type', 'application/json');
   return res.json({
-    speech: 'Cant handle the queries with two teams now. I will update myself',
-    displayText:
-      'Cant handle the queries with two teams now. I will update myself',
-    source: 'game schedule'
+    fulfillmentText: 'This is a text response',
+    fulfillmentMessages: [
+      {
+        card: {
+          title: 'card title',
+          subtitle: 'card text',
+          imageUri:
+            'https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png',
+          buttons: [
+            {
+              text: 'button text',
+              postback: 'https://assistant.google.com/'
+            }
+          ]
+        }
+      }
+    ],
+    source: 'example.com',
+    payload: {
+      google: {
+        expectUserResponse: true,
+        richResponse: {
+          items: [
+            {
+              simpleResponse: {
+                textToSpeech: 'this is a simple response'
+              }
+            }
+          ]
+        }
+      },
+      facebook: {
+        text: 'Hello, Facebook!'
+      },
+      slack: {
+        text: 'This is a text response for Slack.'
+      }
+    },
+
+    followupEventInput: {
+      name: 'event name',
+      languageCode: 'en-US',
+      parameters: {
+        param: 'param value'
+      }
+    }
   });
 });
 // app.get('/', (req, res) => {
