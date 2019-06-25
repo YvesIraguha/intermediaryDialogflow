@@ -13,15 +13,16 @@ allLocations{
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.post('/', (req, res) => {
-  //   await request('https://converge-api-test.andela.com/mrm', query).then(data =>
-  //     console.log(data.allLocations[0])
-  //   );
+app.post('/', async (req, res) => {
+  const answer = await request(
+    'https://converge-api-test.andela.com/mrm',
+    query
+  );
 
-  console.log('request', req.body);
+  console.log('request', answer);
   //   response.setHeader('Content-Type', 'application/json');
   return res.json({
-    fulfillmentText: 'hello world',
+    fulfillmentText: `hello world ${answer.allLocations[0].rooms.length}`,
     payload: {
       google: {
         expectUserResponse: false,
