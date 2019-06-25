@@ -13,60 +13,17 @@ allLocations{
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.post('/', async (req, res) => {
-  await request('https://converge-api-test.andela.com/mrm', query).then(data =>
-    console.log(data.allLocations[0])
-  );
+app.post('/', (req, res) => {
+  //   await request('https://converge-api-test.andela.com/mrm', query).then(data =>
+  //     console.log(data.allLocations[0])
+  //   );
 
   console.log('request', req.body);
   //   response.setHeader('Content-Type', 'application/json');
   return res.json({
-    fulfillmentText: 'This is a text response',
-    fulfillmentMessages: [
-      {
-        card: {
-          title: 'card title',
-          subtitle: 'card text',
-          imageUri:
-            'https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png',
-          buttons: [
-            {
-              text: 'button text',
-              postback: 'https://assistant.google.com/'
-            }
-          ]
-        }
-      }
-    ],
-    source: 'example.com',
-    payload: {
-      google: {
-        expectUserResponse: true,
-        richResponse: {
-          items: [
-            {
-              simpleResponse: {
-                textToSpeech: 'this is a simple response'
-              }
-            }
-          ]
-        }
-      },
-      facebook: {
-        text: 'Hello, Facebook!'
-      },
-      slack: {
-        text: 'This is a text response for Slack.'
-      }
-    },
-
-    followupEventInput: {
-      name: 'event name',
-      languageCode: 'en-US',
-      parameters: {
-        param: 'param value'
-      }
-    }
+    speech: 'Something went wrong!',
+    displayText: 'Something went wrong!',
+    source: 'get-movie-details'
   });
 });
 // app.get('/', (req, res) => {
