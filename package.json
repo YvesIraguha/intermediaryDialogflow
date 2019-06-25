@@ -1,0 +1,22 @@
+{
+  "name": "makegraphqlrequest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "graphQl"
+  ],
+  "author": "Yves Iraguha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "graphql-request": "^1.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
