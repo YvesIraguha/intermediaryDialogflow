@@ -21,6 +21,7 @@ app.post('/', (req, res) => {
   console.log('request', req.body);
   //   response.setHeader('Content-Type', 'application/json');
   return res.json({
+    fulfillmentText: 'hello world',
     payload: {
       google: {
         expectUserResponse: false,
