@@ -20,6 +20,7 @@ app.post('/', async (req, res) => {
 
   console.log('request', req.body);
   res.status(200).json({ msg: 'hello world, how Can I help you?' });
+  return { fulfillmentText: 'This is a text response' };
 });
 // app.get('/', (req, res) => {
 //   console.log('we can help you with everything you need');
