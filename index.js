@@ -13,14 +13,19 @@ allLocations{
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.post('/', async (req, res) => {
+app.post('/', async (req, response) => {
   await request('https://converge-api-test.andela.com/mrm', query).then(data =>
-    console.log(data.allLocations[0])
+    console.log(data.allLocations[0][0])
   );
 
   console.log('request', req.body);
-  res.status(200).json({ msg: 'hello world, how Can I help you?' });
-  return { fulfillmentText: 'This is a text response' };
+  response.setHeader('Content-Type', 'application/json');
+  response.send(
+    JSON.stringify({
+      speech: 'Error. Can you try it again ? ',
+      displayText: 'Error. Can you try it again ? '
+    })
+  );
 });
 // app.get('/', (req, res) => {
 //   console.log('we can help you with everything you need');
